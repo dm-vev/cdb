@@ -11,7 +11,7 @@ It is a non-relational database written in pure C for fast performance. At the m
 #### Examples:
 
 ##### Main example
-```
+```c
 #include "cdb.h"
 
 int main(int argc, char** argv) {
