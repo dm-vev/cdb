@@ -21,13 +21,18 @@ void cdb_init_database() {
 }
 
 void cdb_set(char* key, char* value) {
+  if (strlen(key) > MAX_KEYS || strlen(value) > MAX_VALUE_LENGTH) {
+    return;
+  }
   strcpy(db.keys[db.count], key);
   strcpy(db.values[db.count], value);
   db.count++;
 }
 
 void cdb_remove(char* key) {
-
+  if (strlen(key) > MAX_KEYS) {
+    return;
+  }
   for (int i = 0; i < db.count; i++) {
     if (strcmp(db.keys[i], key) == 0) {
       strcpy(db.keys[i], db.keys[db.count - 1]);
@@ -48,6 +53,9 @@ char** get_keys() {
 }
 
 char* cdb_get(char* key) {
+  if (strlen(key) > MAX_KEYS) {
+    return;
+  }
   for (int i = 0; i < db.count; i++) {
     if (strcmp(db.keys[i], key) == 0) {
       return db.values[i];
