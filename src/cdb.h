@@ -26,6 +26,27 @@ void cdb_set(char* key, char* value) {
   db.count++;
 }
 
+void cdb_remove(char* key) {
+
+  for (int i = 0; i < db.count; i++) {
+    if (strcmp(db.keys[i], key) == 0) {
+      strcpy(db.keys[i], db.keys[db.count - 1]);
+      strcpy(db.values[i], db.values[db.count - 1]);
+      db.count--;
+      break;
+    }
+  }
+
+}
+
+char** get_keys() {
+  char** keys = (char**)malloc(db.count * sizeof(char*));
+  for (int i = 0; i < db.count; i++) {
+    keys[i] = db.keys[i];
+  }
+  return keys;
+}
+
 char* cdb_get(char* key) {
   for (int i = 0; i < db.count; i++) {
     if (strcmp(db.keys[i], key) == 0) {
