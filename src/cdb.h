@@ -14,9 +14,7 @@ typedef struct {
   int count;
 } cdb_database;
 
-void cdb_init_database(cdb_database* db) {
-  db->count = 0;
-}
+void cdb_init_database(cdb_database* db) { db->count = 0; }
 
 void cdb_set(cdb_database* db, char* key, char* value) {
   if (strlen(key) > MAX_KEYS || strlen(value) > MAX_VALUE_LENGTH) {
