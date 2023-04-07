@@ -74,9 +74,7 @@ void cdb_load_database(cdb_database* db, char* filename) {
   cdb_init_database(db);
 
   FILE* fp = fopen(filename, "r");
-  if (fp == NULL) {
-    return;
-  }
+  if (fp == NULL) return;
 
   char key[MAX_VALUE_LENGTH];
   char value[MAX_VALUE_LENGTH];
